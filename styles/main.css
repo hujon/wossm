@@ -1,0 +1,58 @@
+body
+{
+	background-color: grey;
+
+	text-align: center;
+}
+
+h1
+{
+	text-align: left;
+
+	font-size: larger;
+}
+
+div#visualise_canvas
+{
+	margin: 1em auto;
+	padding: 0;
+
+	text-align: center;
+
+	width: 80em;
+	height: 20em;
+
+	border: medium solid black;
+	border-radius: 5px;
+
+	background-color: green;
+}
+
+div#media_canvas
+{
+	margin: 0 1em 1em;
+	padding: 0;
+
+	height: 10em;
+
+	text-align: center;
+
+	border: thin solid black;
+
+	background-color: white;
+}
+
+div#playlist
+{
+	margin: 0 1em 1em;
+	padding: 0;
+
+	height: 15em;
+	width: 40em;
+
+	text-align: center;
+
+	border: thin dotted black;
+
+	background-color: yellow;
+}
