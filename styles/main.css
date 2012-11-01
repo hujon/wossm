@@ -28,7 +28,7 @@ div#visualise_canvas
 	background-color: green;
 }
 
-div#media_canvas
+div#media_box
 {
 	margin: 0 1em 1em;
 	padding: 0;
@@ -42,6 +42,48 @@ div#media_canvas
 	background-color: white;
 }
 
+div#media_canvas
+{
+	width: 95%;
+	height: inherit;
+
+	float: left;
+
+	text-align: left;
+
+	white-space: nowrap;
+
+	overflow-x: auto;
+	overflow-y: hidden;
+	
+	background-color: blue;
+}
+
+.media_element
+{
+	margin: .5em;
+
+	width: 9em;
+	height: 9em;
+
+	display: inline-block;
+	
+	border: thin dashed black;
+	border-radius: 3px;
+
+	background-color: orange;
+}
+
+div#media_controls
+{
+	width: 5%;
+	height: inherit;
+
+	float: right;
+
+	background-color: red;
+}
+
 div#playlist
 {
 	margin: 0 1em 1em;
@@ -49,6 +91,9 @@ div#playlist
 
 	height: 15em;
 	width: 40em;
+	
+	overflow-x: hidden;
+	overflow-y: auto;
 
 	text-align: center;
 
