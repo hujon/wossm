@@ -1,6 +1,6 @@
 body
 {
-	background-color: grey;
+	background-color: #D6D6D6;
 
 	text-align: center;
 }
@@ -19,7 +19,7 @@ div#visualise_canvas
 
 	text-align: center;
 
-	width: 80em;
+	width: 90%;
 	height: 20em;
 
 	border: medium solid black;
@@ -62,9 +62,10 @@ div#media_canvas
 .media_element
 {
 	margin: .5em;
+	padding: 0.5em;
 
-	width: 9em;
-	height: 9em;
+	width: 8em;
+	height: 8em;
 
 	display: inline-block;
 	
@@ -86,11 +87,11 @@ div#media_controls
 
 div#playlist
 {
-	margin: 0 1em 1em;
+	margin: 1em auto;
 	padding: 0;
 
 	height: 15em;
-	width: 40em;
+	width: 65%;
 	
 	overflow-x: hidden;
 	overflow-y: auto;
@@ -100,4 +101,16 @@ div#playlist
 	border: thin dotted black;
 
 	background-color: yellow;
+}
+
+div.delete_button
+{
+	height: 1em;
+	width: 1em;
+	
+	float: right;
+	
+	cursor: pointer;
+	
+	background-color: red;
 }
