@@ -1,6 +1,6 @@
 window.onload = function()
 {
-	document.getElementsByName('add_media')[0].onclick = function() {new SlideshowElement()};	
+	document.getElementsByName('add_media')[0].onclick = function() {new AddFilesQuery()};	
 };
 
 function close (me) {
@@ -27,6 +27,10 @@ function SlideshowElement()
 
 }
 
+/// QueryWindow Object /////////////////////////////////////////////////////////
+
+// Query Window constructor
+// Creates empty query window
 function QueryWindow()
 {
 	this.bg = document.createElement('div');
@@ -56,6 +60,7 @@ QueryWindow.prototype =
 		wnd.appendChild(this.createForm());
 
 		this.bg.appendChild(wnd);
+		window.scrollTo(0,0);
 	},
 	createForm: function()
 	{
@@ -66,3 +71,30 @@ QueryWindow.prototype =
 		this.bg.parentNode.removeChild(this.bg);
 	}
 };
+
+/// AddFilesQuery Object ///////////////////////////////////////////////////////
+
+// AddFilesQuery creates Add Files dialog and handles adding media
+// AddFilesQuery inherits from QueryWindow
+function AddFilesQuery()
+{
+	QueryWindow.call(this);
+}
+AddFilesQuery.prototype = Object.create(QueryWindow.prototype);
+AddFilesQuery.prototype.createForm = function()
+{
+	var canvas = document.createElement('div');
+	
+	var title = document.createElement('h1');
+	title.innerHTML = 'Add media';
+	canvas.appendChild(title);
+
+	var form = document.createElement('button');
+	form.name = 'add_media';
+	form.innerHTML = 'Add media';
+	var t = this;
+	form.onclick = function() {new SlideshowElement(); t.close()};
+	canvas.appendChild(form);
+
+	return canvas;
+}
