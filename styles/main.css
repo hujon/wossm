@@ -59,54 +59,6 @@ div#media_canvas
 	background-color: blue;
 }
 
-div#grey_out
-{
-	position: fixed;
-	top: 0;
-	left: 0;
-
-	margin: 0;
-	padding: 0;
-
-	width: 100%;
-
-	text-align: center;
-
-	background-color: rgba(0,0,0,0.6);
-
-	z-index: 1000;
-}
-
-div#query_window
-{	
-	margin: auto;
-	margin-top: 10em;
-
-	border: thin groove grey;
-	border-radius: .5em;
-	box-shadow: 5px 5px 5px black;
-
-	background-color: rgb(206, 206, 202);
-
-	z-index: 1001;
-
-	position: relative;
-}
-
-#query_window h1
-{
-	margin: 0;
-	margin-bottom: 1em;
-	padding: .2em;
-
-	font-size: small;
-
-	background-color: green;
-
-	border-top-left-radius: .5em;
-	border-top-right-radius: .5em;
-}
-
 .media_element
 {
 	margin: .5em;

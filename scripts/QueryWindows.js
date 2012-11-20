@@ -53,7 +53,8 @@ QueryWindow.createForm = function()
 // Function deletes query window from web page
 QueryWindow.close = function()
 {
-		this.bg.parentNode.removeChild(this.bg);
+	this.bg.removeChild(this.bg.firstChild);
+	this.bg.parentNode.removeChild(this.bg);
 };
 
 
@@ -72,13 +73,19 @@ AddFilesQuery.createForm = function()
 	var title = document.createElement('h1');
 	title.innerHTML = 'Add media';
 	canvas.appendChild(title);
-
-	var form = document.createElement('button');
-	form.name = 'add_media';
-	form.innerHTML = 'Add media';
+	
 	var t = this;
-	form.onclick = function() {new SlideshowElement(); t.close()};
-	canvas.appendChild(form);
+
+	var dropArea = document.createElement('div');
+	dropArea.id = 'dropArea';
+	dropArea.innerHTML = 'Drop files here';
+	canvas.appendChild(dropArea);
+
+	var input = document.createElement('input');
+	input.type = 'file';
+	input.multiple = 1;
+	input.onchange = function() {new SlideshowElement(); t.close()};
+	canvas.appendChild(input);
 
 	return canvas;
 };
