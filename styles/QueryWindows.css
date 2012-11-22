@@ -44,13 +44,16 @@ div#query_window
 	margin: 0;
 	margin-bottom: 1em;
 	padding: .2em;
+	padding-left: 1em;
+	border-bottom: thin solid grey;
+	display: block;
 
-	font-size: small;
+	font: 120%/150% Arial;
 
-	background-color: green;
+	background-color: rgba(142,185,42,1);
 
-	border-top-left-radius: .5em;
-	border-top-right-radius: .5em;
+	border-top-left-radius: .3em;
+	border-top-right-radius: .3em;
 }
 
 div#dropArea
