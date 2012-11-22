@@ -11,11 +11,13 @@
 
 		<link rel="stylesheet" href="styles/main.css" />
 		<link rel="stylesheet" href="styles/QueryWindows.css" />
+		<link rel="stylesheet" href="styles/visualiser.css" />
 
 		<script type="text/javascript" src="scripts/main.js"></script>
 		<script type="text/javascript" src="scripts/QueryWindows.js"></script>
 		<script type="text/javascript" src="scripts/shortcuts.js"></script>
 		<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?sensor=false"></script>
+		<script type="text/javascript" src="scripts/ContextMenu.js"></script>
 		<script type="text/javascript" src="scripts/visualiser.js"></script>
 
 	</head>
@@ -25,6 +27,20 @@
 			<div id="map">
 			</div>
 			<div id="add_place">
+				<h2>Add place</h2>
+				<form>
+					<label for="name">Name</label>
+					<input name="name" type="text" />
+
+					Coordinates:
+					<label for="longitude">Longitude</label>
+					<input name="longitude" type="text" />
+
+					<label for="latitude">Latitude</label>
+					<input name="latitude" type="text" />
+
+					<button name="add_place">Add</button>
+				</form>
 			</div>
 			<div id="places">
 			</div>
@@ -39,8 +55,5 @@
 		<div id="playlist">
 			Playlist
 		</div>
-		<div style="display: block; width: 100px; height: 20px; overflow: hidden;">
-			<input type="file" id="upload_input" name="upload" style="font-size: 50px; width: 120px; opacity: 0; filter:alpha(opacity: 0);  position: relative; top: -40px;; left: -20px" />
-		</div>					
 	</body>
 </html>
