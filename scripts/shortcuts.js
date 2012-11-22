@@ -1,6 +1,11 @@
 document.onkeydown = function(evt) {
 	if(!evt) evt = event;
-	if(evt.keyCode == 85) document.getElementsByName('hidden_file')[0].click();
+
+	if(evt.keyCode == 85)
+		document.getElementsByName('hidden_file')[0].click();
+	else if(evt.keyCode == 190) {
+		new SlideshowElement();
+	}
 }
 
 /**
