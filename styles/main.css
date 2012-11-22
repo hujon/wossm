@@ -107,6 +107,8 @@ div.delete_button
 {
 	height: 1em;
 	width: 1em;
+
+	margin: .2em !important;
 	
 	float: right;
 	

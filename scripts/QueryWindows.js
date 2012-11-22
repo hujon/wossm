@@ -8,8 +8,7 @@ var QueryWindow = Object.clone();
 
 // Properties
 QueryWindow.bg = document.createElement('div');
-QueryWindow.height = '20em';
-QueryWindow.width = '20em';
+QueryWindow.title = 'Query Window';
 
 // Methods
 
@@ -29,14 +28,16 @@ QueryWindow.createWindow = function()
 {
 	var wnd = document.createElement('div');
 	wnd.id = 'query_window';
-	wnd.style.height = this.height;
-	wnd.style.width = this.width;
 	
 	var close = document.createElement('div');
 	close.className = 'delete_button';
 	var t = this;
 	close.onclick = function() {t.close()};
 	wnd.appendChild(close);
+	
+	var title = document.createElement('h1');
+	title.innerHTML = this.title;
+	wnd.appendChild(title);
 
 	wnd.appendChild(this.createForm());
 
@@ -65,14 +66,12 @@ QueryWindow.close = function()
 
 var AddFilesQuery = QueryWindow.clone(); // clone QueryWindow object
 
+AddFilesQuery.title = 'Add Files';
+
 // Modify create form so it contains intended items
 AddFilesQuery.createForm = function()
 {
 	var canvas = document.createElement('div');
-	
-	var title = document.createElement('h1');
-	title.innerHTML = 'Add media';
-	canvas.appendChild(title);
 	
 	var t = this;
 
@@ -89,3 +88,7 @@ AddFilesQuery.createForm = function()
 
 	return canvas;
 };
+
+onLoad.add( function() {
+	document.getElementsByName('add_media')[0].onclick = function() {AddFilesQuery.init()};
+});

@@ -1,6 +1,17 @@
+var onLoad = {
+	functions : new Array(),
+	add : function(F)
+	{
+		this.functions[this.functions.length] = F;
+	}
+};
+
 window.onload = function()
 {
-	document.getElementsByName('add_media')[0].onclick = function() {AddFilesQuery.init()};	
+	for(var i = 0; i < onLoad.functions.length; i++) {
+		onLoad.functions[i]();
+	}
+
 };
 
 /**

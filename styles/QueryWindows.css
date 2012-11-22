@@ -21,6 +21,8 @@ div#query_window
 	margin: auto;
 	margin-top: 10em;
 
+	width: 25em;
+
 	border: thin groove grey;
 	border-radius: .5em;
 	box-shadow: 5px 5px 5px black;
@@ -30,6 +32,11 @@ div#query_window
 	z-index: 1001;
 
 	position: relative;
+}
+
+#query_window div
+{
+	margin: 1em;
 }
 
 #query_window h1
