@@ -1,0 +1,8 @@
+.context_menu
+{
+	background-color: rgb(214,214,214);
+	
+	border: thin solid gray;
+
+	padding: .2em;
+}
