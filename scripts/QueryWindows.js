@@ -85,6 +85,6 @@ var AddFilesQuery = Obj.extend(QueryWindow, {
 	}
 }); // var AddFilesQuery
 
-onLoad.add( function() {
+$(document).ready( function() {
 	document.getElementsByName('add_media')[0].onclick = function() {new AddFilesQuery()};
 });

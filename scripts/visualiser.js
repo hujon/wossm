@@ -1,14 +1,10 @@
 // Adds map to div#map
-onLoad.add( function(modifyer) {
+$(document).ready( function() {
 
 	var startOpt = {
 		center: new google.maps.LatLng(49.162619,16.602009),
 		zoom: 1,
 		mapTypeId: google.maps.MapTypeId.HYBRID
-	}
-
-	for(var prop in modifyer) {
-		startOpt[prop] = modifyer[prop];
 	}
 
 	var Map = new google.maps.Map(document.getElementById('map'), startOpt);
@@ -22,17 +18,45 @@ onLoad.add( function(modifyer) {
 	});
 
 	google.maps.event.addListener(Map, "maptypeid_changed", function(ev) {
-		// log Map.getZoom()
-		alert(Map.getMapTypeId());
+		// log Map.getMapTypeId();
 	});
 
 	var contextMenu = new ContextMenu(Map, {
 		classNames: {menu: 'context_menu'},
-		menuItems: [{eventName: 'zoom_in_click', label: 'Add place'}]
+		menuItems: [{eventName: 'add_place', label: 'Add place'}]
 	});
 
 	google.maps.event.addListener(Map, "rightclick", function(ev) {
 		contextMenu.show(ev.latLng);
+	});
+
+	google.maps.event.addListener(contextMenu, 'menu_item_selected', function(latLng, eventName) {
+		switch(eventName) {
+			case 'add_place':
+				Slideshow.addPlace(
+					new Place(
+						Map,
+						'No name',
+						latLng.lat(),
+						latLng.lng()
+					)
+				);
+				break;
+		}
+	});
+
+	$('[name="add_place"]').click( function(event) {
+		event.preventDefault();
+
+		Slideshow.addPlace( 
+			new Place(
+				Map,
+				$('[name="name"]')[0].value,
+				$('[name="latitude"]')[0].value,
+				$('[name="longitude"]')[0].value
+			)
+		);
+		
 	});
 
 });

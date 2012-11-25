@@ -1,28 +1,4 @@
 /**
- * Object holding array of functions, that should run after window loads.
- */
-var onLoad = {
-	functions : new Array(), //< Array of functions
-	/**
-	 * Registers F to be run after window loads.
-	 *
-	 * @param F is function, that should run after window loads.
-	 */
-	add : function(F)
-	{
-		this.functions[this.functions.length] = F;
-	}
-}; // var onLoad
-
-// when window loads, run all functions from onLoad object
-window.onload = function()
-{
-	for(var i = 0; i < onLoad.functions.length; i++) {
-		onLoad.functions[i]();
-	}
-};
-
-/**
  * Helper object for easier object management.
  *
  */
@@ -101,3 +77,38 @@ var SlideshowElement = Obj.create({
 		this.el.parentNode.removeChild(this.el);
 	}
 }); // var SlideshowElement
+
+var Place = Obj.create({
+	constructor : function(map, name, lat, lng) {
+		this.map = map;
+		this.name = name;
+
+		this.marker = new google.maps.Marker({
+			draggable : true,
+			position : new google.maps.LatLng(lat, lng),
+			map : this.map
+		});
+
+		$( '<div/>', {
+			"class": "place",
+			text: this.name
+		}).appendTo(
+			$('#places')[0]
+		);
+	},
+	map : null,
+	name : null,
+	marker : null,
+	el : null,
+	media : new Array(),
+	getPosition : function() {
+		return this.marker.getPosition();
+	}
+}); // var Place
+
+var Slideshow = {
+	places : new Array(),
+	addPlace : function(place) {
+		this.places.push(place);
+	}
+} // var Slideshow

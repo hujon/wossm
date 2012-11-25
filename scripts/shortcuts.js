@@ -11,8 +11,7 @@ document.onkeydown = function(evt) {
 /**
  * Gets document ready for file upload on key shortcut
  */
-function upclick()
-{
+$(document).ready( function() {
 	var form = document.createElement('form');
 	form.style.height = 0;
 	form.style.visibility = 'hidden';
@@ -24,5 +23,4 @@ function upclick()
 	form.appendChild(input);
 
 	document.body.insertBefore(form, document.body.firstChild);
-}
-onLoad.add(upclick);
+});

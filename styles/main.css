@@ -80,6 +80,9 @@ div#places
 	height: 20em;
 
 	float: right;
+
+	overflow-x: hidden;
+	overflow-y: auto;
 }
 
 div#media_canvas
