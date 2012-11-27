@@ -3,8 +3,6 @@ document.onkeydown = function(evt) {
 
 	if(evt.keyCode == 85)
 		document.getElementsByName('hidden_file')[0].click();
-	else if(evt.keyCode == 190) {
-		new SlideshowElement();
 	}
 }
 
@@ -17,10 +15,16 @@ $(document).ready( function() {
 	form.style.visibility = 'hidden';
 	form.style.position = 'absolute';
 
-	var input = document.createElement('input');
-	input.name = 'hidden_file';
-	input.type = 'file';
-	form.appendChild(input);
+	$('<input/>', {
+		type : 'file',
+		name : 'hidden_file',
+		multiple : true
+	}).appendTo(form).bind('change', function(evt) {
+		var files = evt.target.files;
+		for(var i = 0, f; f = files[i]; i++) {
+			new SlideshowElement(f);
+		}
+	});
 
 	document.body.insertBefore(form, document.body.firstChild);
 });

@@ -68,17 +68,39 @@ var AddFilesQuery = Obj.extend(QueryWindow, {
 	createForm : function() {
 		var canvas = document.createElement('div');
 		
-		var t = this;
+		var _this = this;
 
-		var dropArea = document.createElement('div');
-		dropArea.id = 'dropArea';
-		dropArea.innerHTML = 'Drop files here';
-		canvas.appendChild(dropArea);
+		var dropArea = $('<div/>', {
+			id : 'dropArea',
+			text : 'Drop files here'
+		}).appendTo(canvas)[0];
+		dropArea.addEventListener('dragover', function(evt) {
+			evt.preventDefault();
+			evt.stopPropagation();
+			evt.dataTransfer.dropEffect = 'copy';
+		}, false);
+		dropArea.addEventListener('drop', function(evt) {
+			evt.preventDefault();
+			evt.stopPropagation();
+
+			var files = evt.dataTransfer.files;
+		
+			for(var i = 0, f; f = files[i]; i++) {
+				alert(f.name);
+			}
+			_this.close();
+		}, false);
 
 		var input = document.createElement('input');
 		input.type = 'file';
 		input.multiple = 1;
-		input.onchange = function() {new SlideshowElement(); t.close()};
+		input.addEventListener('change', function(evt) {
+			var files = evt.target.files;
+			for(var i = 0, f; f = files[i]; i++) {
+				new SlideshowElement(f);
+			}
+			_this.close();
+		}, false);
 		canvas.appendChild(input);
 
 		return canvas;
@@ -86,5 +108,8 @@ var AddFilesQuery = Obj.extend(QueryWindow, {
 }); // var AddFilesQuery
 
 $(document).ready( function() {
+	if(!window.File || !window.FileReader || !window.FileList || !window.Blob) {
+		alert("The File APIs are not fully supported in this browser, local files won't work.");
+	}
 	document.getElementsByName('add_media')[0].onclick = function() {new AddFilesQuery()};
 });

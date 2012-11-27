@@ -58,18 +58,12 @@ var Obj = {
 /// Slideshow Element
 
 var SlideshowElement = Obj.create({
-	constructor : function() {
+	constructor : function(file) {
+		var type = file.type.split('/')[0];
+		try {
+			return eval("new SlideshowElement_" + type + "(file)");
+		} catch(e) {};
 		
-		this.el = document.createElement('div');
-		this.el.className = 'media_element';
-		
-		var closeBtn = document.createElement('div'); 
-		closeBtn.className = 'delete_button';
-		var t = this;
-		closeBtn.onclick = function() {t.remove()};
-		this.el.appendChild(closeBtn);
-
-		document.getElementById('media_canvas').appendChild(this.el);
 	},
 	el : null,
 	name : null,
@@ -77,6 +71,36 @@ var SlideshowElement = Obj.create({
 		this.el.parentNode.removeChild(this.el);
 	}
 }); // var SlideshowElement
+
+var SlideshowElement_image = Obj.extend(SlideshowElement, {
+	constructor : function(file) {
+
+		this.name = file.name;
+		var _this = this;
+		
+		var reader = new FileReader();
+
+		reader.onload = function(content) {
+			var el = $('<div/>', {
+				"class" : 'media_element',
+			}).appendTo('#media_canvas');
+			_this.el = el[0];
+
+			$('<div/>', {
+				"class" : 'delete_button',
+				click : function() {_this.remove()}
+			}).appendTo(el);
+
+			$('<img/>', {
+				"class" : "thumbnail",
+				title : escape(file.name),
+				src : content.target.result
+			}).appendTo(el);
+		};
+
+		reader.readAsDataURL(file);
+	}
+});
 
 var Place = Obj.create({
 	constructor : function(map, name, lat, lng) {
@@ -92,9 +116,7 @@ var Place = Obj.create({
 		$( '<div/>', {
 			"class": "place",
 			text: this.name
-		}).appendTo(
-			$('#places')[0]
-		);
+		}).appendTo('#places');
 	},
 	map : null,
 	name : null,
