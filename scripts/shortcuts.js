@@ -1,9 +1,26 @@
-document.onkeydown = function(evt) {
-	if(!evt) evt = event;
+var isCtrl = false;
 
-	if(evt.keyCode == 85)
-		document.getElementsByName('hidden_file')[0].click();
+document.onkeyup = function(evt) {
+	if(!evt) evt = window.event;
+	
+	if(evt.keyCode == 17) {
+		isCtrl = false;
 	}
+}
+
+document.onkeydown = function(evt) {
+	if(!evt) evt = window.event;
+
+	if(evt.keyCode == 17) {
+		isCtrl = true;
+	} else if(isCtrl) {
+		if(evt.keyCode == 85) {
+			evt.preventDefault();
+			evt.stopPropagation();
+			document.getElementsByName('hidden_file')[0].click();
+		}
+	}
+
 }
 
 /**
