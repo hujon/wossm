@@ -1,37 +1,59 @@
 .context_menu
 {
-	background-color: rgb(214,214,214);
-	
-	border: thin solid gray;
+  background-color: rgb(214,214,214);
+  
+  border: thin solid gray;
 
-	padding: .2em;
+  padding: .2em;
 }
 
-.place
+div#places .place
 {
-	padding: 1em 2em;
-	margin: 1em;
+  padding: 1em 2em;
+  margin: 1em;
 
-	border: medium dashed rgb(187, 187, 187);
-	border-radius: 1em;
-	
-	overflow: hidden;
+  border: medium dashed rgb(187, 187, 187);
+  border-radius: 1em;
+  
+  overflow: hidden;
 
-	text-align: center;
+  position: relative;
+
+  text-align: center;
 }
 
-.place input
+div#places .place input
 {
-	border: none;
-	width: 7em;
-		
-	text-align: center;
-	
-	color: rgb(187,187, 187);
-	
-	font-size: x-large;
-	font-family: sans-serif;
-	font-weight: bold;
+  border: none;
+  width: 7em;
+    
+  text-align: center;
+  
+  color: rgb(187,187, 187);
+  
+  font-size: x-large;
+  font-family: sans-serif;
+  font-weight: bold;
 
-	background: none;
+  background: none;
+}
+
+div#places .dragOver
+{
+  border: medium solid black;
+}
+
+div#places .dragOver input
+{
+  color: black;
+}
+
+div.droparea
+{
+  position: absolute;
+  top: 0;
+  left: 0;
+
+  width: 100%;
+  height:100%;
 }

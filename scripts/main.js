@@ -55,6 +55,7 @@ var Obj = {
 }; // var Obj
 
 
+var dragItem = null;
 /// Slideshow Element
 
 var SlideshowElement = Obj.create({
@@ -101,15 +102,17 @@ var SlideshowElement_image = Obj.extend(SlideshowElement, {
       }).appendTo(el);
 
       _this.el.addEventListener('dragstart', function(evt) {
-          evt = evt || window.event;
-          evt.dataTransfer.effectAllowed = 'move';
-          evt.dataTransfer.setData('text/html', this.innerHTML);
+          evt.dataTransfer.effectAllowed = 'copy';
+          evt.dataTransfer.setData('application/json', JSON.stringify(_this));
+          dragItem = _this;
           this.style.opacity = '0.5';
       }, false);
 
       _this.el.addEventListener('dragend', function(evt) {
-          alert('OK');
+          this.style.opacity = '1';
+        dragItem = null;
       }, false);
+    
     };
 
     reader.readAsDataURL(file);
@@ -118,8 +121,10 @@ var SlideshowElement_image = Obj.extend(SlideshowElement, {
 
 var Place = Obj.create({
   constructor : function(map, name, lat, lng) {
+    this.media = new Array();
     this.map = map;
     this.name = name;
+    var _this = this;
 
     this.marker = new google.maps.Marker({
       draggable : true,
@@ -129,38 +134,57 @@ var Place = Obj.create({
     });
 
     container = $( '<div/>', {
-      "class": "place",
-      click: function()
+      "class" : "place"
+    }).appendTo('#places');
+    this.el = container[0];
+
+    $('<input type="text" />').val(this.name).change( function() {
+      _this.name = this.value;
+    }).appendTo(container);
+
+    var droparea = $('<div />', {
+      "class"   : 'droparea',
+      draggable : true,
+      click     : function()
       {
-        input = $(this).find('input');
+        input = $(_this.el).find('input');
         if(!input.is(":focus")) {
-          tmp = input.val();
+          var tmp = input.val();
           input.val('');
           input.focus();
           input.val(tmp);
         }
 
       }
-    }).appendTo('#places');
-    this.el = container[0];
-
-    $('<input type="text" />').val(this.name).change( function() {
-      
-      for(i = 0; i < Slideshow.places.length; i++) {
-        if(Slideshow.places[i].el == this.parentNode) {
-          Slideshow.places[i].name = this.value;
-          break;
-        }
-      }
     }).appendTo(container);
+    droparea = droparea[0];
     
-    this.el.addEventListener('dragenter', function(evt) {
-      //this.classList.add('');
-      alert('OVER');
+    droparea.addEventListener('dragenter', function(evt) {
+      _this.el.classList.add('dragOver');
     }, false);
 
-    this.el.addEventListener('drop', function(evt) {
-      alert('OK');
+    droparea.addEventListener('dragover', function(evt) {
+      evt.preventDefault();
+      evt.dataTransfer.dropEffect = 'copy';
+      return false;
+    }, false);
+    
+    droparea.addEventListener('dragleave', function(evt) {
+      _this.el.classList.remove('dragOver');
+    }, false);
+
+    droparea.addEventListener('drop', function(evt) {
+      evt.preventDefault();
+      evt.stopPropagation();
+      _this.el.classList.remove('dragOver');
+      if(evt.dataTransfer.getData('application/json')) {
+        var index = Slideshow.unPlaced.indexOf(dragItem);
+        if(index >= 0) {
+          Slideshow.unPlaced.splice(index, 1);
+        }
+        _this.media.push(dragItem);
+      }
+      return false;
     }, false);
 
   },
@@ -168,7 +192,7 @@ var Place = Obj.create({
   name : null,
   marker : null,
   el : null,
-  media : new Array(),
+  media : null,
   getPosition : function() {
     return this.marker.getPosition();
   }
