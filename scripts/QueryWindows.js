@@ -86,7 +86,7 @@ var AddFilesQuery = Obj.extend(QueryWindow, {
 			var files = evt.dataTransfer.files;
 		
 			for(var i = 0, f; f = files[i]; i++) {
-				alert(f.name);
+				Slideshow.addMedia(new SideshowElement(f));
 			}
 			_this.close();
 		}, false);
@@ -97,7 +97,7 @@ var AddFilesQuery = Obj.extend(QueryWindow, {
 		input.addEventListener('change', function(evt) {
 			var files = evt.target.files;
 			for(var i = 0, f; f = files[i]; i++) {
-				new SlideshowElement(f);
+				Slideshow.addMedia(new SlideshowElement(f));
 			}
 			_this.close();
 		}, false);

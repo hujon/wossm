@@ -118,6 +118,8 @@ div#media_canvas
 	border-radius: 3px;
 
 	background-color: orange;
+
+  cursor: move;
 }
 
 div#bottom_box

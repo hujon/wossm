@@ -9,16 +9,29 @@
 
 .place
 {
-	padding: 2em;
+	padding: 1em 2em;
 	margin: 1em;
 
 	border: medium dashed rgb(187, 187, 187);
 	border-radius: 1em;
 	
+	overflow: hidden;
+
+	text-align: center;
+}
+
+.place input
+{
+	border: none;
+	width: 7em;
+		
 	text-align: center;
 	
 	color: rgb(187,187, 187);
 	
-	font-size: larger;
+	font-size: x-large;
 	font-family: sans-serif;
+	font-weight: bold;
+
+	background: none;
 }

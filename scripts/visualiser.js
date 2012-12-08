@@ -36,7 +36,7 @@ $(document).ready( function() {
 				Slideshow.addPlace(
 					new Place(
 						Map,
-						'No name',
+						'New place',
 						latLng.lat(),
 						latLng.lng()
 					)
@@ -51,11 +51,15 @@ $(document).ready( function() {
 		Slideshow.addPlace( 
 			new Place(
 				Map,
-				$('[name="name"]')[0].value,
-				$('[name="latitude"]')[0].value,
-				$('[name="longitude"]')[0].value
+				$('[name="name"]').val(),
+				$('[name="latitude"]').val(),
+				$('[name="longitude"]').val()
 			)
 		);
+
+		$('[name="name"]').val('');
+		$('[name="latitude"]').val('');
+		$('[name="longitude"]').val('');
 		
 	});
 
