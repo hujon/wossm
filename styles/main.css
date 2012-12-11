@@ -12,11 +12,6 @@ body
 	text-align: center;
 }
 
-body > div
-{
-	background-color: #d6d6d6;
-}
-
 h1
 {
 	text-align: left;
@@ -48,6 +43,8 @@ div#visualise_canvas
 
 	border: medium solid black;
 	border-radius: 5px;
+
+	background-color: #d6d6d6;
 
 }
 
@@ -86,6 +83,8 @@ div#places
 
 div#media_canvas
 {
+  clear: both;
+
 	margin: auto;
 	width: 70em;
 	padding: 0;
@@ -96,6 +95,8 @@ div#media_canvas
 
 	border: thin solid black;
 	border-radius: 5px;
+
+	background-color: #d6d6d6;
 
 	text-align: left;
 
@@ -141,8 +142,6 @@ div#media_controls
 	width: 5em;
 	height: 15em;
 	
-	background-color: #bbb;
-	
 	border-top-right-radius: 5px;
 	border-bottom-right-radius: 5px;
 
@@ -165,6 +164,8 @@ div#playlist
 
 	border: thin solid black;
 	border-radius: 5px;
+
+	background-color: #d6d6d6;
 }
 
 div.delete_button
@@ -185,4 +186,49 @@ img.thumbnail
 {
 	max-height: 8em;
 	max-width: 8em;
+}
+
+#mediaWrapper
+{
+  margin: auto;
+
+	width: 70em;
+  
+  background: none;
+}
+
+#placeSelector
+{
+  margin: auto;
+  
+  width: 9em;
+  font-size: x-large;
+
+  text-align: left;
+
+  float: left;
+
+  border: none;
+  overflow: hidden;
+
+  background: url('../images/choosePlace.png') no-repeat right;
+}
+
+#placeSelector select
+{
+  width: 10em;
+  
+  border: none;
+  background: none;
+
+  font-size: x-large;
+  font-weight: bold;
+  text-shadow: 2px 2px 2px #fff;
+}
+
+#placeSelector option
+{
+  font-size: normal;
+  font-weight: normal;
+  text-shadow: none;
 }

@@ -16,6 +16,7 @@
 			<script type="text/javascript" src="scripts/jquery-1.8.3.js"></script>
 			<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?sensor=false"></script>
 			<script type="text/javascript" src="scripts/main.js"></script>
+			<script type="text/javascript" src="scripts/Slideshow.js"></script>
 			<script type="text/javascript" src="scripts/QueryWindows.js"></script>
 			<script type="text/javascript" src="scripts/shortcuts.js"></script>
 			<script type="text/javascript" src="scripts/ContextMenu.js"></script>
@@ -46,8 +47,15 @@
 			<div id="places">
 			</div>
 		</div>
-		<div id="media_canvas">
-		</div>
+    <div id="mediaWrapper">
+      <div id="placeSelector">
+        <select>
+          <option value="">Unplaced</option>
+        </select>
+      </div>
+      <div id="media_canvas">
+      </div>
+    </div>
 		<div id="bottom_box">
 			<div id="playlist">
 				Playlist
