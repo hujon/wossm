@@ -65,10 +65,13 @@ $('#placeSelector').ready( function() {
     var len = $('#placeSelector option:selected').text().length;
 
     $('#placeSelector').css({
-      'width' : len + 3 + 'em'
+      'width' : len/1.5 + 3 + 'em'
     });
     $('#placeSelector select').css({
-      'width' : len + 3 + 2+'em'
+      'width' : len/1.5 + 3 + 2+'em'
+    });
+	$('#mediaWrapper > div:first-child').css({
+      'width' : len/1.5 + 3 + 0.1+'em'
     });
     
     if(activePlace == null) {

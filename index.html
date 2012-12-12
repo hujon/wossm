@@ -1,68 +1,77 @@
-	<!DOCTYPE html>
-	<html lang="en-US">
-		<head>
-			<meta charset="UTF-8" />
-			<meta name="author" content="Ondřej Hujňák" />
-			<meta name="description" content="Open Source web application whose purpose is to create and play slideshows from online resources." />
+<!DOCTYPE html>
+<html lang="en-US">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="author" content="Ondřej Hujňák" />
+		<meta name="description" content="Open Source web application whose purpose is to create and play slideshows from online resources." />
 
-			<title>Wossm</title>
+		<title>Wossm</title>
 
-			<link rel="shortcut icon" href="wossm-images/icon.ico" /> 
+		<link rel="shortcut icon" href="wossm-images/icon.ico" /> 
 
-			<link rel="stylesheet" href="styles/main.css" />
-			<link rel="stylesheet" href="styles/QueryWindows.css" />
-			<link rel="stylesheet" href="styles/visualiser.css" />
+		<link rel="stylesheet" href="styles/main.css" />
+		<link rel="stylesheet" href="styles/QueryWindows.css" />
+		<link rel="stylesheet" href="styles/visualiser.css" />
 
-			<script type="text/javascript" src="scripts/jquery-1.8.3.js"></script>
-			<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?sensor=false"></script>
-			<script type="text/javascript" src="scripts/main.js"></script>
-			<script type="text/javascript" src="scripts/Slideshow.js"></script>
-			<script type="text/javascript" src="scripts/QueryWindows.js"></script>
-			<script type="text/javascript" src="scripts/shortcuts.js"></script>
-			<script type="text/javascript" src="scripts/ContextMenu.js"></script>
-			<script type="text/javascript" src="scripts/visualiser.js"></script>
+		<script type="text/javascript" src="scripts/jquery-1.8.3.js"></script>
+		<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?sensor=false"></script>
+		<script type="text/javascript" src="scripts/main.js"></script>
+		<script type="text/javascript" src="scripts/Slideshow.js"></script>
+		<script type="text/javascript" src="scripts/QueryWindows.js"></script>
+		<script type="text/javascript" src="scripts/shortcuts.js"></script>
+		<script type="text/javascript" src="scripts/ContextMenu.js"></script>
+		<script type="text/javascript" src="scripts/visualiser.js"></script>
 
-		</head>
-		<body>
-		<h1>Web Open Source Slideshow Maker</h1>
-		<div id="visualise_canvas">
-			<div id="map">
-			</div>
-			<div id="add_place">
-				<h2>Add place</h2>
-				<form>
-					<label for="name">Name</label>
-					<input name="name" type="text" />
-
-					Coordinates:
-					<label for="latitude">Latitude</label>
-					<input name="latitude" type="text" />
-
-					<label for="longitude">Longitude</label>
-					<input name="longitude" type="text" />
-
-					<button name="add_place">Add</button>
-				</form>
-			</div>
-			<div id="places">
-			</div>
+	</head>
+	<body>
+	<h1>Web Open Source Slideshow Maker</h1>
+	<div id="visualise_canvas">
+		<div id="map">
 		</div>
+		<div id="add_place">
+			<h2>Add place</h2>
+			<form>
+			<table>
+				<tr>
+				<th><label for="name">Name</label></th>
+				<td><input name="name" type="text" /></td>
+				</tr>
+				<tr>
+				<th>Coordinates:</th><td></td>
+				</tr>
+				<tr>
+				<th><label for="latitude">Latitude</label></th>
+				<td><input name="latitude" type="text" /></td>
+				</tr>
+				<tr>
+				<th><label for="longitude">Longitude</label></th>
+				<td><input name="longitude" type="text" /></td>
+				</tr>
+				
+			</table>
+			<button name="add_place">Add</button>
+			</form>
+		</div>
+		<div id="places">
+		</div>
+	</div>
     <div id="mediaWrapper">
-      <div id="placeSelector">
-        <select>
-          <option value="">Unplaced</option>
-        </select>
-      </div>
-      <div id="media_canvas">
-      </div>
-    </div>
-		<div id="bottom_box">
-			<div id="playlist">
-				Playlist
-			</div>
-			<div id="media_controls">
-				<button name="add_media">Add media</button>
-			</div>
+		<div>
+		<div id="placeSelector">
+			<select>
+				<option value="">Unplaced</option>
+			</select>
 		</div>
+		</div>
+		<div id="media_canvas">
+		</div>
+    </div>
+	<div id="bottom_box">
+		<div id="playlist">
+		</div>
+		<div id="media_controls">
+			<button name="add_media">Add media</button>
+		</div>
+	</div>
 	</body>
 </html>

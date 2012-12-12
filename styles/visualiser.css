@@ -12,7 +12,7 @@ div#places .place
   padding: 1em 2em;
   margin: 1em;
 
-  border: medium dashed rgb(187, 187, 187);
+  border: medium dashed #1A1A1A;
   border-radius: 1em;
   
   overflow: hidden;
@@ -29,7 +29,7 @@ div#places .place input
     
   text-align: center;
   
-  color: rgb(187,187, 187);
+  color: #eee;
   
   font-size: x-large;
   font-family: sans-serif;
