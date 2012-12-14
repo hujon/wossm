@@ -43,7 +43,7 @@ var SlideshowElement_image = Obj.extend(SlideshowElement, {
 
     $('<div/>', {
       "class"   : 'delete_button',
-      click     : function() {this.remove()},
+      click     : function() {_this.remove()},
       draggable : false
     }).appendTo(el);
 
