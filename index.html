@@ -12,6 +12,7 @@
 		<link rel="stylesheet" href="styles/main.css" />
 		<link rel="stylesheet" href="styles/QueryWindows.css" />
 		<link rel="stylesheet" href="styles/visualiser.css" />
+		<link rel="stylesheet" href="styles/media_lists.css" />
 
 		<script type="text/javascript" src="scripts/jquery-1.8.3.js"></script>
 		<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?sensor=false"></script>
@@ -25,6 +26,10 @@
 	</head>
 	<body>
 	<h1>Web Open Source Slideshow Maker</h1>
+	<div id="controls">
+		<button name="add_media">Add media</button>
+		<button name="play">Play presentation</button>
+	</div>
 	<div id="visualise_canvas">
 		<div id="map">
 		</div>
@@ -56,21 +61,22 @@
 		</div>
 	</div>
     <div id="mediaWrapper">
+		<div id="playlist">
+			<h2>Playlist</h2>
+			<div>
+			</div>
+		</div>
 		<div>
-		<div id="placeSelector">
-			<select>
-				<option value="">Unplaced</option>
-			</select>
-		</div>
-		</div>
-		<div id="media_canvas">
+			<div id="placeSelector">
+				<div>
+				<select>
+					<option value="">Unplaced</option>
+				</select>
+				</div>
+			</div>
+			<div id="media_canvas">
+			</div>
 		</div>
     </div>
-	<div id="bottom_box">
-		<div id="playlist">
-		</div>
-		<button name="add_media">Add media</button>
-		<button name="play">Play presentation</button>
-	</div>
 	</body>
 </html>

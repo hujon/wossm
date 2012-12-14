@@ -12,6 +12,12 @@ h1
 	font-size: larger;
 }
 
+h2
+{
+	font: bold 150% Arial;
+	color: #333;
+}
+
 body > h1 {
 	-webkit-border-bottom-left-radius: 0.5em;
 	-webkit-border-bottom-right-radius: 0.5em;
@@ -30,144 +36,23 @@ body > h1 {
 	text-align: center;
 	display: inline-block;
 	margin: auto;
-	margin-bottom: 0.5em;
 	padding: 0.3em 0.7em;
+	margin-bottom: 0.7em;
 }
 
-div#visualise_canvas
+div#controls button
 {
-	margin: 1em auto;
-	padding: 0;
-
-	text-align: center;
-
-	width: 70em;
-	height: 20em;
-
+	font: bold 150% Arial;
+	color: #333;
+	
+	margin: 0 1em;
+	height: 2em;
+	width: 15em;
+	
 	border: medium solid #eee;
 	border-radius: 5px;
 
 	background-color: #67E46F;
-
-}
-
-div#map
-{
-	width: 35.5em;
-	height: 20em;
-
-	border-right: medium solid #eee;
-
-	background-color: grey;
-
-	float: left;
-}
-
-div#add_place
-{
-	width: 15em;
-	height: 20em;
-
-	border-right: thin dashed #eee;
-
-	float: left;
-}
-
-div#places
-{
-	width: 19em;
-	height: 20em;
-
-	float: right;
-
-	overflow-x: hidden;
-	overflow-y: auto;
-}
-
-div#media_canvas
-{
-  clear: both;
-
-	margin: auto;
-	width: 70em;
-	padding: 0;
-
-	height: 10em;
-
-	text-align: center;
-
-	border: medium solid #eee;
-	border-radius: 5px;
-	-webkit-border-top-left-radius: 0;
-	-moz-border-radius-topleft: 0;
-	border-top-left-radius: 0;
-
-	background-color: #5DCFC3;
-
-	text-align: left;
-
-	white-space: nowrap;
-
-	overflow-x: auto;
-	overflow-y: hidden;
-}
-
-.media_element
-{
-	margin: .5em;
-
-	width: 8em;
-	height: 8em;
-
-	display: inline-block;
-	
-	border: thin dashed black;
-	border-radius: 3px;
-
-	background-color: orange;
-
-  cursor: move;
-}
-
-div#bottom_box
-{
-	margin: 1em auto 2em;
-	padding: 0 0 2em;
-	
-	height: 17em;
-	width: 70em;
-	
-	
-	background: none;
-	
-	border-right: 0.4em solid transparent;
-}
-
-div#bottom_box button
-{
-	float: left;
-	margin-left: 2em;
-	height: 5em;
-}
-
-div#playlist
-{
-	padding: 0;
-
-	height: 15em;
-	width: 20em;
-	
-	float: left;
-	
-	overflow-x: hidden;
-	overflow-y: auto;
-
-	text-align: center;
-
-	border: medium solid #eee;
-	border-radius: 5px;
-
-	background-color: #4D8FF2;
 }
 
 div.delete_button
@@ -188,112 +73,4 @@ img.thumbnail
 {
 	max-height: 8em;
 	max-width: 8em;
-}
-
-#mediaWrapper
-{
-	margin: auto;
-
-	width: 70em;
-	border-right: 0.4em solid transparent;
-	background: none;
-}
-
-#mediaWrapper > div:first-child
-{
-	-webkit-border-top-left-radius: 5px;
-	-webkit-border-top-right-radius: 5px;
-	-moz-border-radius-topleft: 5px;
-	-moz-border-radius-topright: 5px;
-	border-top-left-radius: 5px;
-	border-top-right-radius: 5px;
-	border: medium solid #eee;
-	border-bottom: none;
-
-	font-size: x-large;
-	background-color: #51BEB3;
-	
-	width: 9.1em;
-	height: 1.5em;
-	position: relative;
-	top: 0.12em;
-	padding-top: 0.1em;
-}
-
-#placeSelector
-{
-  margin: auto;
-  
-  width: 9em;
-  font-size: x-large;
-
-  text-align: left;
-
-  float: left;
-
-  border: none;
-  overflow: hidden;
-
-  background: url('../images/choosePlace.png') no-repeat right;
-}
-
-#placeSelector select
-{
-  width: 10em;
-  
-  border: none;
-  background: none;
-
-  color: #333;
-  font-size: x-large;
-  font-weight: bold;
-  
-}
-
-#placeSelector option
-{
-  font-size: normal;
-  font-weight: normal;
-  text-shadow: none;
-}
-
-#add_place
-{
-	color: #333;
-}
-
-#add_place table
-{
-	margin: auto;
-}
-
-#add_place h2
-{
-	font: bold 150% Arial;
-}
-
-#add_place th
-{
-	font-family: Arial;
-	text-align: right;
-	font-weight: normal;
-	padding-right: 0.5em;
-}
-
-#add_place tr:nth-child(2) th
-{
-	max-width: 1em;
-	padding: 1em 0;
-	font-weight: bold;
-	padding-left: 4em;
-}
-
-#add_place button
-{
-	margin-top: 2em;
-}
-
-#add_place input
-{
-	width: 10em;
 }

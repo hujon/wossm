@@ -62,17 +62,17 @@ $('#placeSelector').ready( function() {
   $('#placeSelector select').change( function() {
     activePlace = this.value || null;
 
-    var len = $('#placeSelector option:selected').text().length;
+    //var len = $('#placeSelector option:selected').text().length;
 
-    $('#placeSelector').css({
-      'width' : len/1.5 + 3 + 'em'
-    });
-    $('#placeSelector select').css({
-      'width' : len/1.5 + 3 + 2+'em'
-    });
-	$('#mediaWrapper > div:first-child').css({
-      'width' : len/1.5 + 3 + 0.1+'em'
-    });
+    //$('#placeSelector').css({
+    //  'width' : len/1.5 + 3 + 'em'
+    //});
+    //$('#placeSelector select').css({
+    //  'width' : len/1.5 + 3 + 2+'em'
+    //});
+	//$('#mediaWrapper > div:first-child').css({
+    //  'width' : len/1.5 + 3 + 0.1+'em'
+    //});
     
     if(activePlace == null) {
       Slideshow.displayUnPlaced();

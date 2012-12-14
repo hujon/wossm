@@ -25,7 +25,6 @@ div#query_window
 
 	border: thin groove grey;
 	border-radius: .5em;
-	box-shadow: 5px 5px 5px black;
 
 	background-color: rgb(206, 206, 202);
 
@@ -47,6 +46,7 @@ div#query_window
 	padding-left: 1em;
 	border-bottom: thin solid grey;
 	display: block;
+	color: #333;
 
 	font: 120%/150% Arial;
 

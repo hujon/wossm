@@ -1,3 +1,97 @@
+div#visualise_canvas
+{
+	margin: 2em auto;
+	padding: 0;
+
+	text-align: center;
+
+	width: 70em;
+	height: 20em;
+
+	border: medium solid #eee;
+	border-radius: 5px;
+
+	background-color: #66E4A1;
+
+}
+
+div#map
+{
+	width: 35.5em;
+	height: 20em;
+
+	border-right: medium solid #eee;
+
+	background-color: grey;
+
+	float: left;
+}
+
+div#add_place
+{
+	width: 15em;
+	height: 20em;
+
+	border-right: thin dashed #eee;
+
+	float: left;
+}
+
+div#places
+{
+	width: 19em;
+	height: 20em;
+
+	float: right;
+
+	overflow-x: hidden;
+	overflow-y: auto;
+}
+
+#add_place
+{
+	color: #333;
+}
+
+#add_place table
+{
+	margin: auto;
+}
+
+#add_place th
+{
+	font-family: Arial;
+	text-align: right;
+	font-weight: normal;
+	padding-right: 0.5em;
+}
+
+#add_place tr:nth-child(2) th
+{
+	max-width: 1em;
+	padding: 1em 0;
+	font-weight: bold;
+	padding-left: 4em;
+}
+
+#add_place button
+{
+	font: bold 120% Arial;
+	border: thin solid #aaa;
+	border-radius: 5px;
+	background-color: #eee;
+	color: #333;
+	margin-top: 1em;
+	width: 4em;
+	height: 2em;
+}
+
+#add_place input
+{
+	width: 10em;
+	height: 1.5em;
+}
+
 .context_menu
 {
   background-color: rgb(214,214,214);
@@ -12,7 +106,7 @@ div#places .place
   padding: 1em 2em;
   margin: 1em;
 
-  border: medium dashed #1A1A1A;
+  border: medium dashed #333;
   border-radius: 1em;
   
   overflow: hidden;
