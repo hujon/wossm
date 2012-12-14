@@ -36,7 +36,7 @@ var SlideshowElement_image = Obj.extend(SlideshowElement, {
   display : function()
   {
     var el = $('<div/>', {
-      "class"     : 'media_element',
+      "class"   : 'media_element',
       draggable : true
     }).appendTo('#media_canvas');
     this.el = el[0];

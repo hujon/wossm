@@ -38,7 +38,7 @@ var QueryWindow = Obj.create({
     wnd.appendChild(this.createForm());
 
     this.bg.appendChild(wnd);
-    window.scrollTo(0,0);
+    //window.scrollTo(0,0); why?
   
   },
   /**
