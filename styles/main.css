@@ -40,7 +40,7 @@ body > h1 {
 	margin-bottom: 0.7em;
 }
 
-div#controls button
+div#controls_top button
 {
 	font: bold 150% Arial;
 	color: #333;
@@ -53,6 +53,29 @@ div#controls button
 	border-radius: 5px;
 
 	background-color: #67E46F;
+}
+
+div#controls_bottom
+{
+	margin: auto;
+	margin-bottom: 3em;
+	padding: 0;
+	clear: both;
+}
+
+div#controls_bottom button
+{
+	font: bold 150% Arial;
+	color: #333;
+	
+	margin: 0 1em;
+	height: 2em;
+	width: 15em;
+	
+	border: medium solid #eee;
+	border-radius: 5px;
+
+	background-color: #57BAFF;
 }
 
 div.delete_button
