@@ -94,11 +94,13 @@ var Place = Obj.create({
   },
   displayOnMap  : function(lat, lng)
   {
-    return new google.maps.Marker({
+    return new MarkerWithLabel({
       draggable : true,
-      labelText: 'test',
       position : new google.maps.LatLng(lat, lng),
-      map : this.map
+      map : this.map,
+      labelContent: this.name,
+      labelAnchor: new google.maps.Point(this.name.length*4 + 5,55),
+      labelClass: "marker_label"
     });
   },
   displayPlace  : function()
@@ -111,6 +113,8 @@ var Place = Obj.create({
 
     $('<input type="text" />').val(this.name).change( function() {
       _this.name = this.value;
+      _this.selectEntry.text(this.value);
+      _this.marker.set('labelContent', this.value);
     }).appendTo(container);
 
     var droparea = $('<div />', {
@@ -207,5 +211,11 @@ var Slideshow = {
     for(var i=0; i<this.unPlaced.length; i++) {
       this.unPlaced[i].display();
     }
+  },
+  play : function() {
+    $('body').css('overflow', 'hidden');
+    var bg = $('<div id="slideshow-bg" />').appendTo('body');
+    Obj.fullScreen(bg[0]);
+    var cnt = $('<div id="slideshow-controllers" />').appendTo(bg);
   }
 } // var Slideshow

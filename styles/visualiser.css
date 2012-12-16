@@ -27,6 +27,23 @@ div#map
 	float: left;
 }
 
+.marker_label
+{
+  padding: .2em .5em;
+
+  opacity: 0.75;
+  
+  text-align: center;
+  white-space: nowrap;
+  
+  background-color: white;
+  
+  border-radius: .2em;
+
+  font-size: 11px;
+  font-weight: bold;
+}
+
 div#add_place
 {
 	width: 15em;

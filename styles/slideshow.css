@@ -1,0 +1,30 @@
+#slideshow-bg
+{
+  margin: 0;
+  padding: 0;
+
+  position: fixed;
+  top: 0;
+  left: 0;
+
+  height: 100%;
+  width: 100%;
+
+  background-color: #333;
+
+  z-index: 666;
+}
+
+#slideshow-controllers
+{
+  position: fixed;
+  bottom: 0;
+  left: 0;
+
+  height: 5em;
+  width: 100%;
+
+  font-size: large;
+  
+  background: pink;
+}

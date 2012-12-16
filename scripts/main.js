@@ -50,8 +50,33 @@ var Obj = {
     }
 
     return retval;
-  } // extend: function(orig, prototype)
-
+  }, // extend: function(orig, prototype)
+  pfx: ["webkit", "moz", "ms", "o", ""],
+  runPrefixMethod: function(obj, method) {
+    var p = 0, m, t;
+    while (p < this.pfx.length && !obj[m]) {
+      m = method;
+      if (this.pfx[p] == "") {
+        m = m.substr(0,1).toLowerCase() + m.substr(1);
+      }
+      m = this.pfx[p] + m;
+      t = typeof obj[m];
+      if (t != "undefined") {
+        this.pfx = [this.pfx[p]];
+        return (t == "function" ? obj[m]() : obj[m]);
+      }
+      p++;
+    }
+  },
+  fullScreen: function(obj) {
+    this.runPrefixMethod(obj, "RequestFullScreen");
+  },
+  cancelFullScreen: function() {
+    this.runPrefixMethod(document, "CancelFullScreen");
+  },
+  isFullScreen: function() {
+    return this.runPrefixMethod(document, "FullScreen") || this.runPrefixMethod(document, "IsFullScreen");
+  }
 }; // var Obj
 
 
@@ -79,5 +104,11 @@ $('#placeSelector').ready( function() {
     } else {
       Slideshow.places[activePlace].displayMedia();
     }
+  });
+});
+
+$('button[name="play"]').ready(function() {
+  $('button[name="play"]').click(function() {
+    Slideshow.play();
   });
 });
