@@ -12,6 +12,20 @@ var SlideshowElement = Obj.create({
   name : null,
   remove : function() {
     this.el.parentNode.removeChild(this.el);
+
+    if(activePlace != null) {
+      Slideshow.places[activePlace].media.splice(
+        Slideshow.places[activePlace].media.indexOf(this),
+        1
+      );
+    } else {
+      Slideshow.unPlaced.splice(
+        Slideshow.unPlaced.indexOf(this),
+        1
+      );
+    }
+
+    delete this;
   },
   display : function() {
   }
@@ -23,15 +37,27 @@ var SlideshowElement_image = Obj.extend(SlideshowElement, {
     this.name = file.name;
     var _this = this;
     
+    this.displayWorkplace(); 
+    
     var reader = new FileReader();
 
     reader.onload = function(content) {
         _this.src = content.target.result;
-        _this.displayWorkplace(); 
+        _this.image = $('<img/>', {
+          "class"   : "thumbnail",
+          title     : escape(_this.name),
+          src       : _this.src,
+          draggable : false
+        }).load(function(){
+          $(_this.el).find('img').remove();
+          _this.image.appendTo(_this.el);
+        });
+
     };
 
     reader.readAsDataURL(file);
   },
+  image : null,
   src : null,
   displayWorkplace : function()
   {
@@ -49,8 +75,7 @@ var SlideshowElement_image = Obj.extend(SlideshowElement, {
 
     $('<img/>', {
       "class"   : "thumbnail",
-      title     : escape(this.name),
-      src       : this.src,
+      src       : 'images/loader.gif',
       draggable : false
     }).appendTo(el);
 
@@ -71,7 +96,6 @@ var SlideshowElement_image = Obj.extend(SlideshowElement, {
   {
     $('<img/>', {
       id        : "slideshow-element",
-      title     : escape(this.name),
       src       : this.src,
       draggable : false
     }).css({
