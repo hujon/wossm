@@ -38,7 +38,7 @@ var SlideshowElement_image = Obj.extend(SlideshowElement, {
     var _this = this;
     
     this.displayWorkplace(); 
-
+    
     var reader = new FileReader();
 
     reader.onload = function(content) {
@@ -49,57 +49,45 @@ var SlideshowElement_image = Obj.extend(SlideshowElement, {
           src       : _this.src,
           draggable : false
         }).load(function(){
-          $(_this.canvas).find('img').remove();
-          _this.image.appendTo(_this.canvas);
+          $(_this.el).find('img').remove();
+          _this.image.appendTo(_this.el);
         });
 
     };
 
     reader.readAsDataURL(file);
   },
-  image   : null,
-  src     : null,
-  canvas  : null,
+  image : null,
+  src : null,
   displayWorkplace : function()
   {
-    $('<div/>', {
-      "class"   : 'media-element-canvas-empty',
-      draggable : false
-    }).appendTo('#media_canvas');
-
     var el = $('<div/>', {
-      "class"   : 'media-element-canvas',
-      draggable : false
-    }).appendTo('#media_canvas');
-    this.el = el[0];
-    
-    var canvas = $('<div/>', {
       "class"   : 'media_element',
       draggable : true
-    }).appendTo(el);
-    this.canvas = canvas;
+    }).appendTo('#media_canvas');
+    this.el = el[0];
 
     $('<div/>', {
       "class"   : 'delete_button',
       click     : function() {_this.remove()},
       draggable : false
-    }).appendTo(canvas);
+    }).appendTo(el);
 
     $('<img/>', {
       "class"   : "thumbnail",
       src       : 'images/loader.gif',
       draggable : false
-    }).appendTo(canvas);
+    }).appendTo(el);
 
     var _this = this;
-    canvas[0].addEventListener('dragstart', function(evt) {
+    this.el.addEventListener('dragstart', function(evt) {
         evt.dataTransfer.effectAllowed = 'copy';
         evt.dataTransfer.setData('application/json', JSON.stringify(_this));
         dragItem = _this;
         this.style.opacity = '0.5';
     }, false);
 
-    canvas[0].addEventListener('dragend', function(evt) {
+    this.el.addEventListener('dragend', function(evt) {
       this.style.opacity = '1';
       dragItem = null;
     }, false);
