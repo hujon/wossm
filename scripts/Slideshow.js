@@ -212,10 +212,52 @@ var Slideshow = {
       this.unPlaced[i].display();
     }
   },
-  play : function() {
+  canvas  : null,
+  display : function() {
+    var _this = this;
+
     $('body').css('overflow', 'hidden');
-    var bg = $('<div id="slideshow-bg" />').appendTo('body');
-    Obj.fullScreen(bg[0]);
-    var cnt = $('<div id="slideshow-controllers" />').appendTo(bg);
+    
+    this.canvas = $('<div id="slideshow-bg" />').appendTo('body');
+    Obj.fullScreen(this.canvas[0]);
+
+    var exArea = $('<div id="slideshow-exit-area" />').appendTo(this.canvas);
+    var ex = $('<button />', {
+      id: 'slideshow-exit',
+      text: 'exit'
+    }).appendTo(exArea).click(function(){
+      _this.exit();
+    });
+    exArea.mouseover(function() {
+      ex.animate({opacity: '1'}, 'slow');
+    });
+    exArea.mouseleave(function() {
+      ex.animate({opacity: '0'}, 'slow');
+    });
+    
+    var cntArea = $('<div id="slideshow-controllers-area" />').appendTo(this.canvas);
+    var cnt = $('<div id="slideshow-controllers" />').appendTo(this.canvas);
+    cntArea.mouseover(function() {
+      cnt.animate({height: '5em'}, 'slow');
+    });
+    cnt.mouseleave(function() {
+      cnt.animate({height: '0'}, 'slow');
+    });
+
+    $('<button />', {
+      text: 'prev'
+    }).appendTo(cnt);
+    
+    $('<button />', {
+      text: 'play'
+    }).appendTo(cnt);
+
+    $('<button />', {
+      text: 'next'
+    }).appendTo(cnt);
+  },
+  exit: function() {
+    this.canvas.remove();
+    this.canvas = null;
   }
 } // var Slideshow

@@ -109,6 +109,6 @@ $('#placeSelector').ready( function() {
 
 $('button[name="play"]').ready(function() {
   $('button[name="play"]').click(function() {
-    Slideshow.play();
+    Slideshow.display();
   });
 });
