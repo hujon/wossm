@@ -76,6 +76,18 @@ var Obj = {
   },
   isFullScreen: function() {
     return this.runPrefixMethod(document, "FullScreen") || this.runPrefixMethod(document, "IsFullScreen");
+  },
+  onFullScreenChange: function(handler) {
+    var p = 0, m = "";
+    while (p < this.pfx.length && !(m in window)) {
+      m = 'on'+this.pfx[p]+'fullscreenchange';
+      if (m in window) {
+        m = this.pfx[p]+'fullscreenchange';
+        this.pfx = [this.pfx[p]];
+        document.addEventListener(m, handler, false);
+      }
+      p++;
+    }
   }
 }; // var Obj
 

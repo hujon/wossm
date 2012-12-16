@@ -7,12 +7,30 @@
   top: 0;
   left: 0;
 
+  display: table;
+
   height: 100%;
   width: 100%;
 
   background-color: #333;
 
   z-index: 666;
+}
+
+#slideshow-canvas
+{
+  margin: 0;
+  padding: 0;
+
+  display: table-cell;
+
+  text-align: center;
+  vertical-align: middle;
+
+  height: 100%;
+  width: 100%;
+
+  background: none;
 }
 
 #slideshow-exit-area
@@ -87,4 +105,10 @@
   width: 5em;
 
   font-size: large;
+}
+
+#slideshow-element
+{
+  max-height: 768px;
+  max-width: 1024px;
 }
