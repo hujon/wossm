@@ -82,17 +82,14 @@ div.delete_button
 {
 	height: 16px;
 	width: 16px;
-
-	margin: 0 !important;
 	
-	float: right;
+  position: absolute;
+  top: .2em;
+  right: .2em;
 	
 	cursor: pointer;
 	
 	z-index: 5;
-	position: relative;
-	top: 0.2em;
-	right: 0.2em;
 
 	background-image: url('../images/close-button.png');
 }
@@ -100,7 +97,9 @@ div.delete_button
 #query_window .delete_button
 {
 	background-image: url('../images/close-button2.png');
-	position: static;
+
+  top: -1em;
+  right: -1em;
 
 	height: 36px;
 	width: 36px;
@@ -108,6 +107,6 @@ div.delete_button
 
 img.thumbnail
 {
-	max-height: 8em;
-	max-width: 8em;
+	max-height: 7.5em;
+	max-width: 7.5em;
 }

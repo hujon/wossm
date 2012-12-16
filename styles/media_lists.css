@@ -66,10 +66,11 @@
 div#media_canvas
 {
 	margin-right: 0;
-	width: 52em;
-	padding: 0;
-
-	height: 10em;
+	padding: .5em;
+  padding-left: 0;
+	
+  width: 51em;
+	height: 9em;
 
 	text-align: center;
 
@@ -117,15 +118,37 @@ div#playlist h2
 	border-bottom: medium solid #eee;
 }
 
+.media-element-canvas-empty
+{
+  height: 8em;
+  width:  .5em;
+
+  float: left;
+}
+
+.media-element-canvas
+{
+  display: table;
+
+  height: 8em;
+  width:  8em;
+
+  float: left;
+
+  position: relative;
+	
+  vertical-align: middle;
+  text-align: center;
+}
+
 .media_element
 {
-	margin: .5em;
+	height: 100%;
+	width: 100%;
 
-	width: 8em;
-	height: 8em;
-
-	display: inline-block;
-	vertical-align: top;
+	display: table-cell;
+	vertical-align: middle;
+  text-align: center;
 	
 	border: thin solid #333;
 	border-radius: 3px;
