@@ -253,8 +253,10 @@ var Slideshow = {
   canvas  : null,
   currPlace: null,
   currMedia: null,
+  presenting: null,
   display : function() {
     var _this = this;
+    this.presenting = true;
 
     $('body').css('overflow', 'hidden');
     
@@ -339,10 +341,12 @@ var Slideshow = {
     }
 
     Obj.onFullScreenChange(function(){
-      $('#slideshow-element').css({
-        'max-height': _this.canvas.height(),
-        'max-width' : _this.canvas.width()
-      });
+      if(_this.presenting && _this.canvas != null) {
+        $('#slideshow-element').css({
+          'max-height': _this.canvas.height(),
+          'max-width' : _this.canvas.width()
+        });
+      }
     });
 
   },
@@ -469,8 +473,11 @@ var Slideshow = {
     return retval;
   },
   exit  : function() {
-    this.canvas.parent().remove();
-    this.canvas = null;
+    this.presenting = false;
+    if(this.canvas != null) {
+      this.canvas.parent().remove();
+      this.canvas = null;
+    }
     $('body').css('overflow', 'auto');
   },
   checkNextBtn  : function() {
