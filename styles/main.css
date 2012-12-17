@@ -1,6 +1,6 @@
 body
 {
-	background: #111111;
+	background: #ccc;
 	margin: 0;
 	text-align: center;
 }
@@ -29,10 +29,10 @@ body > h1 {
 	border: 0.2em solid #eee;
 	border-top: none;
 	
-	color: #14722C;
+	color: #333;
 	font: bold small-caps 300% Verdana, Geneva, sans-serif;
 	
-	background-color: #78DA3F;
+	background-color: #6BE21C;
 	text-align: center;
 	display: inline-block;
 	margin: auto;
@@ -52,7 +52,7 @@ div#controls_top button
 	border: medium solid #eee;
 	border-radius: 5px;
 
-	background-color: #38C148;
+	background-color: #6BE21C;
 }
 
 div#controls_bottom
@@ -75,7 +75,7 @@ div#controls_bottom button
 	border: medium solid #eee;
 	border-radius: 5px;
 
-	background-color: #33799E;
+	background-color: #6BE21C;
 }
 
 div.delete_button

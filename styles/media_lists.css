@@ -25,7 +25,7 @@
 	border-bottom: none;
 
 	font-size: x-large;
-	background-color: #2C9991;
+	background-color: #6BE21C;
 	
 	width: 11em;
 	height: 1.5em;
@@ -79,7 +79,7 @@ div#media_canvas
 	-moz-border-radius-topleft: 0;
 	border-top-left-radius: 0;
 
-	background-color: #2C9991;
+	background-color: #6BE21C;
 
 	text-align: left;
 
@@ -107,7 +107,7 @@ div#playlist
 	border: medium solid #eee;
 	border-radius: 5px;
 
-    background-color: #2C9991;
+    background-color: #6BE21C;
 }
 
 div#playlist h2
