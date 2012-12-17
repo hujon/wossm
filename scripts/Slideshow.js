@@ -58,9 +58,11 @@ var SlideshowElement_image = Obj.extend(SlideshowElement, {
     reader.readAsDataURL(file);
   },
   image : null,
-  src : null,
+  src : 'images/loader.gif',
   displayWorkplace : function()
   {
+    var _this = this;
+    
     var el = $('<div/>', {
       "class"   : 'media_element',
       draggable : true
@@ -75,11 +77,11 @@ var SlideshowElement_image = Obj.extend(SlideshowElement, {
 
     $('<img/>', {
       "class"   : "thumbnail",
-      src       : 'images/loader.gif',
+      title     : escape(this.name),
+      src       : this.src,
       draggable : false
     }).appendTo(el);
 
-    var _this = this;
     this.el.addEventListener('dragstart', function(evt) {
         evt.dataTransfer.effectAllowed = 'copy';
         evt.dataTransfer.setData('application/json', JSON.stringify(_this));
@@ -319,7 +321,7 @@ var Slideshow = {
       for(var i = 0; i < this.places.length; i++) {
         if(this.places[i].media.length != 0) {
           this.currPlace = i;
-          this.currMedia = 0;
+          this.currMedia = -1;
           break;
         }
       }
@@ -345,10 +347,30 @@ var Slideshow = {
 
   },
   displayMedia  : function() {
-    if(this.currPlace != null) {
-      this.places[this.currPlace].media[this.currMedia].displaySlideshow();
+    if(this.currMedia < 0) {
+      if(this.currPlace != null) {
+        $('<div />',{
+          id  : 'slideshow-element',
+          text: this.places[this.currPlace].name
+        }).css({
+          'max-height'  : Slideshow.canvas.height(),
+          'max-width'   : Slideshow.canvas.width()
+        }).appendTo(this.canvas);
+      } else {
+        $('<div />',{
+          id  : 'slideshow-element',
+          text: 'Others'
+        }).css({
+          'max-height'  : Slideshow.canvas.height(),
+          'max-width'   : Slideshow.canvas.width()
+        }).appendTo(this.canvas);
+      }
     } else {
-      this.unPlaced[this.currMedia].displaySlideshow();
+      if(this.currPlace != null) {
+        this.places[this.currPlace].media[this.currMedia].displaySlideshow();
+      } else {
+        this.unPlaced[this.currMedia].displaySlideshow();
+      }
     }
   },
   next  : function() {
@@ -367,7 +389,7 @@ var Slideshow = {
           if(this.places[p].media.length > 0) {
             retval = true;
             this.currPlace = p;
-            this.currMedia = 0;
+            this.currMedia = -1;
             $('#slideshow-element').remove();
             this.displayMedia();
             this.checkPrevBtn();
@@ -378,7 +400,7 @@ var Slideshow = {
         if(!retval && this.unPlaced.length > 0) {
           retval = true;
           this.currPlace = null;
-          this.currMedia = 0;
+          this.currMedia = -1;
           $('#slideshow-element').remove();
           this.displayMedia();
           this.checkPrevBtn();
@@ -400,7 +422,7 @@ var Slideshow = {
     var retval = false;
 
     if(this.currPlace != null) {
-      if(this.currMedia > 0) {
+      if(this.currMedia > -1) {
         retval = true;
         this.currMedia--;
         $('#slideshow-element').remove();
@@ -421,7 +443,7 @@ var Slideshow = {
         }
       }
     } else {
-      if(this.currMedia > 0) {
+      if(this.currMedia > -1) {
         retval = true;
         this.currMedia--;
         $('#slideshow-element').remove();
@@ -483,7 +505,7 @@ var Slideshow = {
   checkPrevBtn  : function() {
     var btn = $('#slideshow-button-prev');
     if(this.currPlace != null) {
-      if(this.currMedia > 0)
+      if(this.currMedia > -1)
         btn.removeAttr('disabled');
       else {
         var found = false;
@@ -500,7 +522,7 @@ var Slideshow = {
         }
       }
     } else {
-      if(this.currMedia > 0) {
+      if(this.currMedia > -1) {
         btn.removeAttr('disabled');
       } else {
         var found = false;
